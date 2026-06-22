@@ -1,3 +1,7 @@
+
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESETS
+   ========================================================================== */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -6,72 +10,113 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    color: #2c3e50;
-    background-color: #004aad;
+    color: #ffffff; /* Texto geral do corpo mudado para BRANCO */
+    background-color: #004aad; /* Azul principal de fundo */
     line-height: 1.6;
 }
 
-/* Cabeçalho Principal */
+/* Container principal para limitar a largura do conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Títulos das Seções (Ex: "Destinos Mais Procurados") */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #ffffff; /* Mudado para BRANCO para destacar no fundo azul */
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #bae6fd; /* Azul claro para a linha sutil */
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E MENU (FLEXBOX)
+   ========================================================================== */
 .main-header {
     background-color: #004aad;
-    color: #004aad;
-    padding: 30px 20px;
+    padding: 40px 20px;
     text-align: center;
     border-bottom: 4px solid #ffffff;
+}
 
+.logo {
+    margin: 0;
+    padding: 0;
 }
 
 .logo img {
-    height: 290px;  /* Define uma altura fixa ideal para cabeçalhos */
-    width: auto;         /* Ajusta a largura automaticamente para não distorcer */
-    max-width: 100%;     /* Garante que ela nunca passe do limite da tela */
+    height: 450px;
+    width: auto;
+    max-width: 100%;
     display: inline-block;
     vertical-align: middle;
-    border: 3px solid #004aad; /* Adiciona uma linha elegante ao redor do círculo */
+    transition: transform 0.3s ease; 
+}
 
+.logo img:hover {
+    transform: scale(1.02);
 }
 
 .tagline {
-    margin: 5px 0 0 0;
-    font-size: 1.1rem;
+    margin: 25px 0 0 0;
+    font-size: 1.3rem;   
     color: #bae6fd;
     font-style: italic;
+    font-weight: 500;
 }
 
-/* Menu de Navegação */
+/* Barra de Navegação */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 .nav-link {
-    display: inline-block;
     color: #000000;
-    padding: 12px 24px;       /* Ajustamos um pouco o espaçamento */
-    margin: 5px 4px;          /* Cria uma pequena margem para o efeito aparecer separado */
+    padding: 12px 24px;
+    margin: 0 5px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    border-radius: 0px;       /* Começa quadrado */
-    transition: background-color 0.3s, color 0.3s, border-radius 0.3s; /* Transição suave */
+    border-radius: 0px;
+    transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
 }
 
-/* Efeito ao passar o mouse encima */
 .nav-link:hover {
     background-color: #004aad;
     color: #ffffff;
     border-radius: 20px;
 }
 
-.navbar {
-    display: block;          /* Garante que o menu se comporte como um bloco completo */
-    width: 100%;             /* Ocupa toda a largura da tela */
-    text-align: center;      /* Alinha todos os links internos no centro */
-    background-color: #ffffff;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 5px 0;
-}
-
-/* Seção Banner Principal (Hero) */
+/* ==========================================================================
+   3. HERO SECTION (BANNER PRINCIPAL)
+   ========================================================================== */
 .hero-section {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(15, 23, 42, 0.6)), 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(15, 23, 42, 0.6)), 
                      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80');
     background-size: cover;
     background-position: center;
@@ -94,19 +139,19 @@ body {
     font-size: 2.8rem;
     margin: 0 0 15px 0;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .hero-overlay p {
     font-size: 1.3rem;
     margin: 0 0 30px 0;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 /* Botões */
 .btn-primary {
     display: inline-block;
-    background-color: #ffffff; /* Laranja de Destaque */
+    background-color: #ffffff;
     color: #000000;
     padding: 14px 28px;
     text-decoration: none;
@@ -115,60 +160,34 @@ body {
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .btn-primary:hover {
     background-color: #000000;
-    transform: translateY(-2px);
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Grid de Destinos e Container */
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #0f172a;
-    margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 12px;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: #0284c7;
-    border-radius: 2px;
-}
-
+/* ==========================================================================
+   4. ESTRUTURA DA GRADE PRINCIPAL (CSS GRID)
+   ========================================================================== */
 .destinos-grid {
-    display: block;
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
-/* Cards de Viagem */
+/* Cards de Viagem (Mantidos brancos por dentro para dar contraste com as fotos) */
 .travel-card {
-    display: inline-block;
-    vertical-align: top;
-    width: 31%;
-    margin: 1%;
     background-color: #ffffff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    text-align: left;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .travel-card:hover {
@@ -189,38 +208,38 @@ body {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 25px;
 }
 
+/* Títulos internos dos Cards */
 .card-body h3 {
     margin: 0 0 10px 0;
     font-size: 1.4rem;
-    color: #1e293b;
+    color: #1e293b; /* Escuro porque o fundo interno do card é branco */
 }
 
+/* Texto descritivo dos Cards */
 .card-body p {
     margin: 0 0 20px 0;
     font-size: 0.95rem;
-    color: #64748b;
-    height: 70px;
-    overflow: hidden;
+    color: #64748b; /* Escuro porque o fundo interno do card é branco */
 }
 
 .card-footer {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-top: 1px solid #f1f5f9;
     padding-top: 15px;
 }
 
 .price {
-    display: inline-block;
     font-size: 1.2rem;
     font-weight: 700;
     color: #0284c7;
 }
 
 .btn-card {
-    float: right;
     background-color: #f1f5f9;
     color: #1e293b;
     padding: 8px 16px;
@@ -235,29 +254,176 @@ body {
     background-color: #e2e8f0;
 }
 
-/* Rodapé */
-.main-footer {
-    background-color: #004aad;
-    color: #94a3b8;
+/* Modificações específicas para os cards de Benefícios */
+.beneficio-card {
     text-align: center;
-    padding: 40px 20px;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.beneficio-card h3 {
+    color: #ffffff; /* Texto Branco no fundo azul */
+}
+
+.beneficio-card p {
+    color: #bae6fd; /* Texto Azul Claro no fundo azul */
+}
+
+.beneficio-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   5. CHAMADA PARA AÇÃO (CTA)
+   ========================================================================== */
+.cta-section {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-container h2 {
+    font-size: 2.2rem;
+    color: #0f172a;
+    margin: 0 0 15px 0;
+}
+
+.cta-container p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0 0 30px 0;
+}
+
+.btn-cta {
+    background-color: #004aad;
+    color: #ffffff;
+}
+
+.btn-cta:hover {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FLEXBOX)
+   ========================================================================== */
+.main-footer {
+    background-color: #003580; 
+    color: #ffffff; /* Alterado para BRANCO para legibilidade total */
+    padding: 60px 20px 30px 20px;
     margin-top: 60px;
 }
 
-.main-footer p {
-    margin: 0 0 10px 0;
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    padding-bottom: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+    margin: 15px;
+}
+
+.footer-col h4 {
+    color: #ffffff; /* Títulos do rodapé em BRANCO */
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    color: #bae6fd; /* Informações em tom AZUL CLARO para contraste elegante */
+    font-size: 0.95rem;
+    margin: 8px 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .footer-sub {
     font-size: 0.85rem;
-    color: #64748b;
+    color: #94a3b8;
+    margin-top: 5px;
 }
 
-/* Responsividade Adaptável para Celulares */
-@media (max-width: 768px) {
-    .travel-card {
-        width: 96%;
-        margin: 2% auto;
-        display: block;
+/* ==========================================================================
+   7. RESPONSIVIDADE E ANIMAÇÕES
+   ========================================================================== */
+@media (max-width: 992px) {
+    .destinos-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
+
+@media (max-width: 768px) {
+    .destinos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .hero-overlay h2 {
+        font-size: 2rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1.1rem;
+    }
+
+    .footer-grid {
+        text-align: center;
+        flex-direction: column;
+    }
+    
+    .navbar {
+        flex-direction: column;
+    }
+    
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        margin: 2px 0;
+    }
+}
+
+/* Animação do Banner Principal */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-overlay h2 {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-overlay p {
+    animation: fadeInUp 0.8s ease 0.2s forwards; 
+    opacity: 0;
+}
+
+.hero-overlay .btn-primary {
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+    opacity: 0;
 }
