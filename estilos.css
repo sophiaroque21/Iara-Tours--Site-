@@ -40,13 +40,12 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: #bae6fd; /* Azul claro para a linha sutil */
+    background-color: #ffffff; /* Azul claro para a linha sutil */
     border-radius: 2px;
 }
 
-/* ==========================================================================
-   2. CABEÇALHO E MENU (FLEXBOX)
-   ========================================================================== */
+/* 2. CABEÇALHO E MENU (FLEXBOX)*/
+   
 .main-header {
     background-color: #004aad;
     padding: 40px 20px;
